@@ -60,13 +60,16 @@ extern const usbd_driver stm32f107_usb_driver;
 extern const usbd_driver stm32f207_usb_driver;
 extern const usbd_driver stm32u5_usb_driver;
 extern const usbd_driver stm32h7_usb_driver;
+extern const usbd_driver stm32h7_otgfs_usb_driver;
 extern const usbd_driver st_usbfs_v2_usb_driver;
-#if !defined(STM32H7) && !defined(STM32U5)
-#define otgfs_usb_driver stm32f107_usb_driver
-#define otghs_usb_driver stm32f207_usb_driver
-#else
+#if defined(STM32H7)
+#define otgfs_usb_driver stm32h7_otgfs_usb_driver
+#elif defined(STM32U5)
 #define otgfs_usb_driver stm32u5_usb_driver
 #define otghs_usb_driver stm32h7_usb_driver
+#else
+#define otgfs_usb_driver stm32f107_usb_driver
+#define otghs_usb_driver stm32f207_usb_driver
 #endif
 extern const usbd_driver efm32lg_usb_driver;
 extern const usbd_driver efm32hg_usb_driver;

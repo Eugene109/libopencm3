@@ -72,6 +72,7 @@ libstm32h7 = static_library(
 		libstm32_timer_sources,
 		libstm32_usart_v2_sources,
 		libstm32_usart_fifos_sources,
+		usb_stm32h7_otgfs_sources,
 	],
 	c_args: libstm32h7_compile_args,
 	include_directories: common_includes,

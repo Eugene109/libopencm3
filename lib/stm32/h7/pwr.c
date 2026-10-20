@@ -149,7 +149,9 @@ void pwr_set_vos_scale(enum pwr_vos_scale scale) {
 			rcc_periph_clock_enable(RCC_SYSCFG);  /* Ensure we can access ODEN. */
 			/* Per the manual, VOS0 is implemented as VOS1 + ODEN. Handle this case. */
 			if (scale == PWR_VOS_SCALE_0) {
-				PWR_D3CR = d3cr_masked | (PWR_D3CR_VOS_SCALE_1 << PWR_SRDCR_VOS_SHIFT);
+				PWR_D3CR = d3cr_masked | (PWR_D3CR_VOS_SCALE_1 << PWR_D3CR_VOS_SHIFT);
+				/* Overdrive may only be enabled once VOS1 is reached. */
+				while (!(PWR_D3CR & PWR_D3CR_VOSRDY));
 				SYSCFG_PWRCR |= SYSCFG_PWRCR_ODEN;
 			} else {
 				SYSCFG_PWRCR &= ~SYSCFG_PWRCR_ODEN;

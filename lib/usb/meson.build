@@ -53,6 +53,7 @@ usb_stm32_f107_sources = files('usb_f107.c')
 usb_stm32_f207_sources = files('usb_f207.c')
 usb_stm32u5_sources = files('usb_stm32u5.c')
 usb_stm32h7_sources = files('usb_stm32h7.c')
+usb_stm32h7_otgfs_sources = files('usb_stm32h7_otgfs.c')
 usb_lm4f_sources = files('usb_lm4f.c')
 
 usb_includes = include_directories('..')
