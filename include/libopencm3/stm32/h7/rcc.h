@@ -631,13 +631,13 @@ enum rcc_periph_rst {
 	RST_USB2OTGRST  = _REG_BIT(0x80, 27),
 
 	/* AHB2 peripherals */
-	RST_DCMI        = _REG_BIT(0xDC, 0),
-	RST_CRYP        = _REG_BIT(0xDC, 4),
-	RST_HASH        = _REG_BIT(0xDC, 5),
-	RST_RNG         = _REG_BIT(0xDC, 6),
-	RST_SDMMC2      = _REG_BIT(0xDC, 9),
-	RST_FMAC        = _REG_BIT(0xDC, 16),
-	RST_CORDIC      = _REG_BIT(0xDC, 17),
+	RST_DCMI        = _REG_BIT(0x84, 0),
+	RST_CRYP        = _REG_BIT(0x84, 4),
+	RST_HASH        = _REG_BIT(0x84, 5),
+	RST_RNG         = _REG_BIT(0x84, 6),
+	RST_SDMMC2      = _REG_BIT(0x84, 9),
+	RST_FMAC        = _REG_BIT(0x84, 16),
+	RST_CORDIC      = _REG_BIT(0x84, 17),
 
 	/* AHB3 peripherals */
 	RST_MDMA        = _REG_BIT(0x7C, 0),
