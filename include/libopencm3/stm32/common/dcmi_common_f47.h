@@ -9,8 +9,9 @@
  *
  * @date 15 May 2020
  *
- * This library supports the  Digital camera interface (DCMI) in the STM32F4xx
- * and STM32F7xx series of ARM Cortex Microcontrollers by ST Microelectronics.
+ * This library supports the  Digital camera interface (DCMI) in the STM32F4xx,
+ * STM32F7xx and STM32H7xx series of ARM Cortex Microcontrollers by
+ * ST Microelectronics.
  *
  * LGPL License Terms @ref lgpl_license
  */
@@ -227,8 +228,9 @@
  * DCMI data register
  *
  * The digital camera Interface packages all the received data in 32-bit format before
- * requesting a DMA transfer. A 4-word deep FIFO is available to leave enough time for DMA
- * transfers and avoid DMA overrun conditions.
+ * requesting a DMA transfer. A small FIFO (4 words deep on STM32F4, 8 words deep on
+ * STM32H7) is available to leave enough time for DMA transfers and avoid DMA overrun
+ * conditions.
  */
 #define DCMI_DR				MMIO32(DCMI_BASE + 0x28U)
 

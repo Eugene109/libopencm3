@@ -59,6 +59,7 @@ libstm32h7 = static_library(
 		libstm32_crc_v2_sources,
 		libstm32_crs_sources,
 		libstm32_dac_v2_sources,
+		libstm32_dcmi_f47_sources,
 		libstm32_dma_f24_sources,
 		libstm32_dmamux_sources,
 		libstm32_exti_sources,
