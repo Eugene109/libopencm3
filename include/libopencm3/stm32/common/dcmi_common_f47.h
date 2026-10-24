@@ -49,6 +49,12 @@
  * @defgroup dcmi_cr_values DCMI_CR Values
  * @{
  */
+/* Bits 20:16 are not available on STM32F407/417/427/429/437/439 */
+#define DCMI_CR_OELS			(1 << 20)
+#define DCMI_CR_LSM			(1 << 19)
+#define DCMI_CR_OEBS			(1 << 18)
+#define DCMI_CR_BSM1			(1 << 17)
+#define DCMI_CR_BSM0			(1 << 16)
 #define DCMI_CR_EN			(1 << 14)
 #define DCMI_CR_EDM1			(1 << 11)
 #define DCMI_CR_EDM0			(1 << 10)

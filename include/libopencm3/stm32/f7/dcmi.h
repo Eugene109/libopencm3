@@ -37,18 +37,4 @@
 
 #include <libopencm3/stm32/common/dcmi_common_f47.h>
 
-/**
- * @defgroup dcmi_cr_values DCMI_CR Values
- * @ingroup dcmi_defines
- * @{
- */
-#define DCMI_CR_OELS			(1 << 20)
-#define DCMI_CR_LSM			(1 << 19)
-#define DCMI_CR_OEBS			(1 << 18)
-#define DCMI_CR_BSM1			(1 << 17)
-#define DCMI_CR_BSM0			(1 << 16)
-
-
-/**@}*/
-
 #endif
