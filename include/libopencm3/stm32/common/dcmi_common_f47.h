@@ -69,6 +69,37 @@
 #define DCMI_CR_CROP			(1 << 2)
 #define DCMI_CR_CM			(1 << 1)
 #define DCMI_CR_CAPTURE			(1 << 0)
+
+#define DCMI_CR_BSM_SHIFT		16
+#define DCMI_CR_BSM_MASK		0x3
+/** Capture all received data */
+#define DCMI_CR_BSM_ALL			(0x0 << DCMI_CR_BSM_SHIFT)
+/** Capture every other byte */
+#define DCMI_CR_BSM_1_IN_2		(0x1 << DCMI_CR_BSM_SHIFT)
+/** Capture one byte out of four */
+#define DCMI_CR_BSM_1_IN_4		(0x2 << DCMI_CR_BSM_SHIFT)
+/** Capture two bytes out of four */
+#define DCMI_CR_BSM_2_IN_4		(0x3 << DCMI_CR_BSM_SHIFT)
+
+#define DCMI_CR_EDM_SHIFT		10
+#define DCMI_CR_EDM_MASK		0x3
+/** Capture 8 bits (DCMI_D[7:0]) on every pixel clock */
+#define DCMI_CR_EDM_8BIT		(0x0 << DCMI_CR_EDM_SHIFT)
+/** Capture 10 bits (DCMI_D[9:0]) on every pixel clock */
+#define DCMI_CR_EDM_10BIT		(0x1 << DCMI_CR_EDM_SHIFT)
+/** Capture 12 bits (DCMI_D[11:0]) on every pixel clock */
+#define DCMI_CR_EDM_12BIT		(0x2 << DCMI_CR_EDM_SHIFT)
+/** Capture 14 bits (DCMI_D[13:0]) on every pixel clock */
+#define DCMI_CR_EDM_14BIT		(0x3 << DCMI_CR_EDM_SHIFT)
+
+#define DCMI_CR_FCRC_SHIFT		8
+#define DCMI_CR_FCRC_MASK		0x3
+/** Capture all frames */
+#define DCMI_CR_FCRC_ALL		(0x0 << DCMI_CR_FCRC_SHIFT)
+/** Capture every alternate frame */
+#define DCMI_CR_FCRC_1_IN_2		(0x1 << DCMI_CR_FCRC_SHIFT)
+/** Capture one frame out of four */
+#define DCMI_CR_FCRC_1_IN_4		(0x2 << DCMI_CR_FCRC_SHIFT)
 /**@}*/
 
 /**
@@ -235,3 +266,42 @@
 #define DCMI_DR				MMIO32(DCMI_BASE + 0x28U)
 
 /**@}*/
+
+BEGIN_DECLS
+
+void dcmi_enable(void);
+void dcmi_disable(void);
+void dcmi_enable_capture(void);
+void dcmi_disable_capture(void);
+bool dcmi_is_capture_enabled(void);
+void dcmi_set_snapshot_mode(void);
+void dcmi_set_continuous_mode(void);
+void dcmi_set_data_width(uint32_t width);
+void dcmi_set_frame_capture_rate(uint32_t rate);
+void dcmi_set_pixclk_polarity_rising(void);
+void dcmi_set_pixclk_polarity_falling(void);
+void dcmi_set_hsync_polarity_high(void);
+void dcmi_set_hsync_polarity_low(void);
+void dcmi_set_vsync_polarity_high(void);
+void dcmi_set_vsync_polarity_low(void);
+void dcmi_enable_jpeg(void);
+void dcmi_disable_jpeg(void);
+void dcmi_enable_embedded_sync(void);
+void dcmi_disable_embedded_sync(void);
+void dcmi_set_embedded_sync_codes(uint8_t fsc, uint8_t lsc, uint8_t lec,
+				  uint8_t fec);
+void dcmi_set_embedded_sync_unmask(uint8_t fsu, uint8_t lsu, uint8_t leu,
+				   uint8_t feu);
+void dcmi_enable_crop(void);
+void dcmi_disable_crop(void);
+void dcmi_set_crop_window(uint16_t hoffset, uint16_t vstart,
+			  uint16_t capture_count, uint16_t line_count);
+void dcmi_enable_irq(uint32_t irq);
+void dcmi_disable_irq(uint32_t irq);
+bool dcmi_get_flag(uint32_t flag);
+bool dcmi_get_interrupt_flag(uint32_t flag);
+void dcmi_clear_flag(uint32_t flag);
+void dcmi_set_byte_select(uint32_t mode);
+void dcmi_set_line_select(uint32_t mode);
+
+END_DECLS
